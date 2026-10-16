@@ -954,26 +954,30 @@ strong {
     border-color: #f9faff;
 }
 
-.button-primary {
+.button-primary,
+#joinRoomButton {
     color: #ffffff;
-    background: linear-gradient(135deg, #376df9 0%, #4678f9 100%);
+    background: #7C35CA;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 14px rgba(55, 109, 249, 0.35);
+    box-shadow: 0 4px 14px rgba(124, 53, 202, 0.35);
     transition:
         background 0.2s ease,
         transform 0.12s ease,
         box-shadow 0.2s ease;
 }
 
-.button-primary:hover {
-    background: linear-gradient(135deg, #4678f9 0%, #5a8aff 100%);
+.button-primary:hover,
+#joinRoomButton:hover {
+    background: #8e42e4;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(55, 109, 249, 0.45);
+    box-shadow: 0 6px 20px rgba(124, 53, 202, 0.45);
 }
 
-.button-primary:active {
+.button-primary:active,
+#joinRoomButton:active {
+    background: #6b2db3;
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(55, 109, 249, 0.3);
+    box-shadow: 0 2px 8px rgba(124, 53, 202, 0.3);
 }
 
 .button-primary.is-loading::after {
@@ -4483,11 +4487,11 @@ body {
     --landing-surface: #1d2026;
     --landing-surface-raised: #242830;
     --landing-border: rgba(255, 255, 255, 0.1);
-    --landing-border-hover: rgba(70, 120, 249, 0.42);
+    --landing-border-hover: rgba(124, 53, 202, 0.42);
     --landing-text: #f4f7fb;
     --landing-text-muted: #959cb1;
-    --landing-primary: #376df9;
-    --landing-primary-bright: #4678f9;
+    --landing-primary: #7C35CA;
+    --landing-primary-bright: #944ce8;
     --landing-secondary: #ff5fa0;
     --landing-accent: #ffc55a;
 }
@@ -4627,7 +4631,7 @@ body {
     border-color: var(--landing-primary);
     background: #141a22;
     box-shadow:
-        0 0 0 3px rgba(22, 140, 255, 0.18),
+        0 0 0 3px rgba(124, 53, 202, 0.22),
         inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -4640,8 +4644,8 @@ body {
 }
 
 .room-gen-btn:hover {
-    border-color: rgba(50, 184, 232, 0.34);
-    background: rgba(22, 140, 255, 0.18);
+    border-color: rgba(124, 53, 202, 0.4);
+    background: rgba(124, 53, 202, 0.18);
 }
 
 .button {
@@ -4650,14 +4654,16 @@ body {
     letter-spacing: 0.04em;
 }
 
-.button-primary {
-    background: linear-gradient(100deg, var(--landing-primary), var(--landing-primary-bright));
-    box-shadow: 0 10px 26px rgba(22, 140, 255, 0.24);
+.button-primary,
+#joinRoomButton {
+    background: #7C35CA;
+    box-shadow: 0 10px 26px rgba(124, 53, 202, 0.35);
 }
 
-.button-primary:hover {
-    background: linear-gradient(100deg, #2495ff, #41c1eb);
-    box-shadow: 0 12px 30px rgba(22, 140, 255, 0.34);
+.button-primary:hover,
+#joinRoomButton:hover {
+    background: #8e42e4;
+    box-shadow: 0 12px 30px rgba(124, 53, 202, 0.48);
 }
 
 .button-custom-room {

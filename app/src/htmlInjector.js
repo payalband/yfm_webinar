@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const chokidar = require('chokidar');
 
 const Logger = require('./logs');
@@ -35,8 +36,10 @@ class HtmlInjector {
     // Function to load a file into the cache
     loadFileToCache(filePath) {
         try {
-            const content = fs.readFileSync(filePath, 'utf-8');
+            const resolvedPath = path.resolve(filePath);
+            const content = fs.readFileSync(resolvedPath, 'utf-8');
             this.cache[filePath] = content; // Store the content in cache
+            this.cache[resolvedPath] = content;
         } catch (err) {
             log.error(`Error reading file: ${filePath}`, err);
         }
@@ -71,12 +74,20 @@ class HtmlInjector {
 
     // Function to inject dynamic data (e.g., OG, TITLE, etc.) into a given file
     injectHtml(filePath, res) {
-        // Check if HTML injection is enabled in the config
-        if (!this.config?.htmlInjection) {
-            return res.send(this.cache[filePath]);
+        const resolvedPath = path.resolve(filePath);
+        let cached = this.cache[filePath] || this.cache[resolvedPath];
+
+        if (!cached) {
+            this.loadFileToCache(filePath);
+            cached = this.cache[filePath] || this.cache[resolvedPath];
         }
 
-        if (!this.cache[filePath]) {
+        // Check if HTML injection is enabled in the config
+        if (!this.config?.htmlInjection) {
+            return res.send(cached);
+        }
+
+        if (!cached) {
             log.error(`File not cached: ${filePath}`);
             if (!res.headersSent) {
                 return res.status(500).send('Server Error');
@@ -86,7 +97,7 @@ class HtmlInjector {
 
         try {
             // Replace placeholders with dynamic data (OG, TITLE, etc.)
-            const modifiedHTML = this.cache[filePath].replace(
+            const modifiedHTML = cached.replace(
                 /{{(OG_[A-Z_]+)}}/g,
                 (_, key) => this.injectData[key] || ''
             );

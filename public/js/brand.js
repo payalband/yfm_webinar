@@ -1,7 +1,7 @@
 'use strict';
 
 // Brand
-const brandDataKey = 'brandDataP2P';
+const brandDataKey = 'brandDataP2P_v3';
 const brandData = window.sessionStorage.getItem(brandDataKey);
 
 // Html pages
@@ -65,8 +65,8 @@ let brand = {
         joinLastLabel: 'Your recent room:',
     },
     site: {
-        shortcutIcon: '../images/logo.svg',
-        appleTouchIcon: '../images/logo.svg',
+        shortcutIcon: '../images/yfm-favicon.png?v=2',
+        appleTouchIcon: '../images/yfm-favicon.png?v=2',
         landingTitle: 'YFM Webinar - WebRTC Video Calls & Meetings',
         newCallTitle: 'YFM Webinar - Free Secure Video Calls, Chat & Screen Sharing.',
         newCallRoomTitle: 'Pick name. <br />Share URL. <br />Start conference.',
@@ -96,15 +96,15 @@ let brand = {
         waitingRoomSongUrl: '',
     },
     html: {
-        topSponsors: true,
-        features: true,
-        teams: true, // please keep me always true ;)
-        tryEasier: true,
-        poweredBy: true,
-        sponsors: true,
-        pastSponsors: true,
-        advertisers: true,
-        supportUs: true,
+        topSponsors: false,
+        features: false,
+        teams: false,
+        tryEasier: false,
+        poweredBy: false,
+        sponsors: false,
+        pastSponsors: false,
+        advertisers: false,
+        supportUs: false,
         footer: true,
     },
     about: {

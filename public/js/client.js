@@ -49,9 +49,9 @@ const images = {
     about: '../images/mirotalk-logo.gif',
     feedback: '../images/feedback.png',
     forbidden: '../images/forbidden.png',
-    avatar: '../images/mirotalk-logo.png',
+    avatar: '../images/yfm-favicon.png',
     recording: '../images/recording.png',
-    poster: '../images/loader.gif',
+    poster: '../images/yfm-favicon.png',
     geoLocation: '../images/geolocation.png',
 }; // nice free icon: https://www.iconfinder.com
 
@@ -9220,7 +9220,7 @@ function createVideoLoadingSpinner(wrap, videoEl) {
 
     const spinnerLogo = document.createElement('img');
     spinnerLogo.className = 'spinner-logo';
-    spinnerLogo.src = '../images/logo.svg';
+    spinnerLogo.src = '../images/yfm-favicon.png';
     spinnerLogo.alt = 'logo';
 
     loadingSpinner.appendChild(spinnerRing);
