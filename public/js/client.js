@@ -18,9 +18,9 @@
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
  * @version 2.0.11
  *
- */
+ */      
 
-'use strict';
+'use strict';            
 
 // https://www.w3schools.com/js/js_strict.asp
 
@@ -619,7 +619,7 @@ const pickr = Pickr.create({
 let thisMaxRoomParticipants = 8;
 
 // misc
-let swBg = 'rgba(0, 0, 0, 0.7)'; // swAlert background color
+let swBg = '#ffffff'; // swAlert background color
 let isDocumentOnFullScreen = false;
 let isToggleExtraBtnClicked = false;
 let hasTemporaryAvatar = !!(lsSettings.peer_avatar && isValidAvatarURL(lsSettings.peer_avatar));
@@ -1609,17 +1609,21 @@ async function handleConnect() {
         if (!useVideo || (!useVideo && !useAudio)) {
             await loadLocalMedia(new MediaStream(), 'video');
         }
-        getHtmlElementsById();
-        setButtonsToolTip();
-        handleUsernameEmojiPicker();
-        manageButtons();
-        handleButtonsRule();
-        setupMySettings();
-        loadSettingsFromLocalStorage();
-        setupVideoUrlPlayer();
-        handleDropdownHover();
-        setupQuickDeviceSwitchDropdowns();
-        startSessionTime();
+        try {
+            getHtmlElementsById();
+            setButtonsToolTip();
+            handleUsernameEmojiPicker();
+            manageButtons();
+            handleButtonsRule();
+            setupMySettings();
+            loadSettingsFromLocalStorage();
+            setupVideoUrlPlayer();
+            handleDropdownHover();
+            setupQuickDeviceSwitchDropdowns();
+            startSessionTime();
+        } catch (uiInitErr) {
+            console.error('Error during UI initialization in handleConnect:', uiInitErr);
+        }
         await whoAreYou();
     }
 }
@@ -2037,7 +2041,7 @@ async function getUserName() {
 async function whoAreYou() {
     console.log('11. Who are you?');
 
-    document.body.style.background = 'var(--body-bg)';
+    document.body.style.background = '#ffffff';
 
     if (myPeerName) {
         elemDisplay(loadingDiv, false);
@@ -2120,7 +2124,7 @@ async function whoAreYou() {
     Swal.fire({
         allowOutsideClick: false,
         allowEscapeKey: false,
-        background: swBg,
+        background: '#ffffff',
         title: brand.app?.name || 'MiroTalk P2P',
         position: 'center',
         input: 'text',
@@ -3544,9 +3548,9 @@ function handleRemovePeer(config) {
  */
 let themeMap = {
     dark: {
-        '--body-bg': 'radial-gradient(#2a2a2e, #121214)',
-        '--msger-bg': 'radial-gradient(#2a2a2e, #121214)',
-        '--msger-private-bg': 'radial-gradient(#2a2a2e, #121214)',
+        '--body-bg': '#ffffff',
+        '--msger-bg': '#ffffff',
+        '--msger-private-bg': '#f8fafc',
         '--wb-bg': 'radial-gradient(#2a2a2e, #121214)',
         '--elem-border-color': '1px solid rgba(255, 255, 255, 0.08)',
         '--navbar-bg': 'rgba(18, 18, 20, 0.85)',
@@ -8235,6 +8239,7 @@ function updateSettingsExtraGroups() {
  * About button click event
  */
 function setAboutBtn() {
+    if (!aboutBtn) return;
     aboutBtn.addEventListener('click', (e) => {
         showAbout();
     });
@@ -9351,7 +9356,7 @@ function shareRoomMeetingURL(checkScreen = false) {
         showDenyButton: true,
         showCancelButton: true,
         cancelButtonColor: 'red',
-        denyButtonColor: 'green',
+        denyButtonColor: '#7C35CA',
         confirmButtonText: `Copy URL`,
         denyButtonText: `Email invite`,
         cancelButtonText: `Close`,
@@ -11849,20 +11854,20 @@ function appendMessage(from, img, side, msg, privateMsg, msgId = null, to = '') 
                 <button
                     id="msg-delete-${chatMessagesId}"
                     class="${className.trash}"
-                    style="color:#fff; border:none; background:transparent;"
+                    style="color:#475569; border:none; background:transparent;"
                     onclick="deleteMessage('msg-${chatMessagesId}')"
                 ></button>
                 <button
                     id="msg-copy-${chatMessagesId}"
                     class="${className.copy}" 
-                    style="color:#fff; border:none; background:transparent;"
+                    style="color:#475569; border:none; background:transparent;"
                     onclick="copyToClipboard('message-${chatMessagesId}')"
                 ></button>`;
     messageActionsHTML += `
                 <button
                     id="msg-reaction-${chatMessagesId}"
                     class="reaction-toggle-btn"
-                    style="color:#fff; border:none; background:transparent;"
+                    style="color:#475569; border:none; background:transparent;"
                     onclick="toggleReactionPicker('${normalizedMsgId}', this)"
                 >😊</button>`;
     if (isSpeechSynthesisSupported) {
@@ -11870,7 +11875,7 @@ function appendMessage(from, img, side, msg, privateMsg, msgId = null, to = '') 
                 <button
                     id="msg-speech-${chatMessagesId}"
                     class="${className.speech}" 
-                    style="color:#fff; border:none; background:transparent;"
+                    style="color:#475569; border:none; background:transparent;"
                     onclick="speechElementText(false, '${escapeJsString(getFrom)}', 'message-${chatMessagesId}')"
                 ></button>`;
     }

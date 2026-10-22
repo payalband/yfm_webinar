@@ -5,8 +5,8 @@
  *
  * Query params used by client.js:
  * - room, name, avatar, audio, video, screen, chat, hide, notify, duration, token
- */
-
+ */   
+              
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('customizeRoomForm');
     const errorEl = document.getElementById('crError');
@@ -17,28 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrWrapEl = document.getElementById('crQrWrap');
     const qrEl = document.getElementById('crQr');
     const randomRoomBtn = document.getElementById('crRandomRoom');
-
-    const roomEl = document.getElementById('room');
+                        
+    const roomEl = document.getElementById('room');     
     const nameEl = document.getElementById('name');
-    const avatarEl = document.getElementById('avatar');
+    const avatarEl = document.getElementById('avatar'); 
     const tokenEl = document.getElementById('token');
-
+           
     const durationEl = document.getElementById('duration');
 
     const audioEl = document.getElementById('audio');
-    const videoEl = document.getElementById('video');
+    const videoEl = document.getElementById('video');    
     const screenEl = document.getElementById('screen');
     const chatEl = document.getElementById('chat');
     const hideEl = document.getElementById('hide');
     const notifyEl = document.getElementById('notify');
-
+            
     // Reasonable defaults (matches the screenshot: audio/video on, others off)
-    if (audioEl) audioEl.checked = true;
-    if (videoEl) videoEl.checked = true;
-
-    let qrCode = null;
-
-    const setError = (msg) => {
+    if (audioEl) audioEl.checked = true;         
+    if (videoEl) videoEl.checked = true;            
+                              
+    let qrCode = null;                            
+                               
+    const setError = (msg) => {    
         if (!errorEl) return;
         if (!msg) {
             errorEl.hidden = true;
